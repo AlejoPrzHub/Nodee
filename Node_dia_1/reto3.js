@@ -1,6 +1,5 @@
 var readline = require("readline");
 var fs = require("fs");
-
 var rl = readline.createInterface(process.stdin, process.stdout);
 
 let datos = {
