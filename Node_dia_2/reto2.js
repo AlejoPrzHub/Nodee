@@ -17,7 +17,7 @@ function pregunta(pregunta)
                 input:process.stdin,
                 output:process.stdout
             });
-            rl.question(pregunta,(respuesta) => {resolve(datos.name = respuesta),
+            rl.question(pregunta,(respuesta) => {resolve(respuesta),
             rl.close()
             }
     )})
@@ -25,3 +25,22 @@ function pregunta(pregunta)
     }
 
     pregunta("cual es tu nombre?")
+    .then((respuesta)=>{
+        datos.name = respuesta
+
+        return pregunta("cuales es tu apellido?")
+    })
+
+    .then((respuesta)=>{
+        datos.surname = respuesta
+
+        return pregunta("cual es tu edad?")
+    })
+
+    .then((respuesta)=>{
+        datos.age = respuesta
+
+        return console.log(datos);
+    })
+
+    
