@@ -8,14 +8,14 @@ class Professional
     nationality;
     profession;
 
-constructor(name,age,weight,height,isRetired,nacionality,profession)
+constructor(name,age,weight,height,isRetired,nationality,profession)
 {
     this.name = name;
     this.age = age;
     this.weight = weight;
     this.height = height;
     this.isRetired = isRetired;
-    this.nationality = nacionality;
+    this.nationality = nationality;
 
     this.profession = profession;
 
