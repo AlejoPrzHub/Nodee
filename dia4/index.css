@@ -1,0 +1,101 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container
+{
+    background-color: black;
+}
+
+.cuerpo
+{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-image: url("img/pngwing.com.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat; 
+}
+.ladoizq{width: 50%;}
+.ladoder
+{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    width: 50%;
+    position: relative;
+}
+.imagen
+{
+    height: 300px;
+    border-radius: 10px;
+}
+.imagen img
+{
+    margin-top: 20px;
+    width: 250px;
+    height: 250px;
+}
+.nombre
+{
+    height: 150px;
+    border-radius: 10px;
+}
+
+.card
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    padding: 5px;
+    gap: 5px;
+    border-radius: 10px;
+}
+.card-superior
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url("img/fondopokemon.jpg");
+    background-position: 50% 50%;
+    background-repeat: no-repeat; 
+    height: 330px;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    gap: 20px;
+}
+
+.card input
+{
+    border-radius: 4px;
+}
+.botones
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    gap: 20px;
+}
+.Pokemon
+{
+    height: 25px;
+    width: 40%;
+    text-align: center;
+}
+.Buscar
+{
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
