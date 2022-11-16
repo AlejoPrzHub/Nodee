@@ -11,7 +11,6 @@ function getStart(request,response)
 function getProfessional(request, response)
 {
     let respuesta;
-    console.log(request.body)
     console.log(request.query)
     if(request.query.id <= pro.length)
     {
@@ -27,7 +26,7 @@ function postProfessional(request, response)
     let respuesta = null
     console.log(request.body)
     if(respuesta === null)
-    respuesta = new Professional(request.body.name,request.body.age,request.body.weight,request.body.height,request.body.isRetired,request.body.nationality,request.body.profession),
+    respuesta = new Professional(request.body.nome,request.body.age,request.body.weight,request.body.height,request.body.isRetired,request.body.nationality,request.body.profession),
     message = {error:false,codigo:200,mensaje:"Professional creado con exito",resultado:respuesta},
     pro.push(respuesta)
     else 
@@ -41,7 +40,7 @@ function putProfessional(request, response)
     console.log(request.body)
     if(request.body.id <= pro.length)
     {
-        pro[request.body.id] = new Professional(request.body.name,request.body.age,request.body.weight,request.body.height,request.body.isRetired,request.body.nationality,request.body.profession)
+        pro[request.body.id] = new Professional(request.body.nome,request.body.age,request.body.weight,request.body.height,request.body.isRetired,request.body.nationality,request.body.profession)
         // pro[request.body.id].name = request.body.name ? request.body.name:pro[request.body.id].name
         // pro[request.body.id].age =request.body.age?request.body.age:pro[request.body.id].age
         // pro[request.body.id].weight =request.body.weight?request.body.weight:pro[request.body.id].weight
