@@ -28,10 +28,13 @@ constructor(nome,age,weight,height,isRetired,nationality,profession)
 }
 
 let pro = [];
+
+
 async function postProfessional()
 {
         try
         {
+            
             let nome = document.getElementById("nome");
             let profession = document.getElementById("profession");
             let age = document.getElementById("age");
@@ -64,6 +67,7 @@ async function getProfessional()
 {
         try
         {
+            let id = document.getElementById("id").value
             let url = "http://localhost:3000/Professional";
             let param =
             {
@@ -72,16 +76,32 @@ async function getProfessional()
             }
             let data = await fetch(url,param);
             let result = await data.json()
-            document.getElementById("prof").innerHTML = 
-            JSON.stringify(pro)
-            // `<div class="card">
-            // <p>Name: ${pro[0].nome}</p>
-            // <p>Profession: ${pro[0].profession} </p>
-            // <p>Age: ${pro[0].age} </p>
-            // <p>Weight: ${pro[0].weight} </p>
-            // <p>Height: ${pro[0].height}</p>
-            // <p>Is Retired?: ${pro[0].isRetired} </p>
-            // <p>Nationality: ${pro[0].nationality}</p>`
+            
+            if(id <= pro.length)
+            {
+                document.getElementById("prof").innerHTML = 
+                `<div class="card">
+                <p>Name: ${pro[id].nome}</p>
+                <p>Profession: ${pro[id].profession} </p>
+                <p>Age: ${pro[id].age} </p>
+                <p>Weight: ${pro[id].weight} </p>
+                <p>Height: ${pro[id].height}</p>
+                <p>Is Retired?: ${pro[id].isRetired} </p>
+                <p>Nationality: ${pro[id].nationality}</p>`
+            }
+            else if(id === "")
+            {
+                for(let i=0;i<pro.length;i++)
+                {document.getElementById("prof").innerHTML += 
+                `<div class="card">
+                <p>Name: ${pro[i].nome}</p>
+                <p>Profession: ${pro[i].profession} </p>
+                <p>Age: ${pro[i].age} </p>
+                <p>Weight: ${pro[i].weight} </p>
+                <p>Height: ${pro[i].height}</p>
+                <p>Is Retired?: ${pro[i].isRetired} </p>
+                <p>Nationality: ${pro[i].nationality}</p>`}
+            }
         }
         catch(error){console.log(error)}
 }
@@ -106,4 +126,36 @@ async function delProfessional()
         
     }
     catch(error){console.log(error)}
+}
+
+async function putProfessional()
+{
+        try
+        {
+            let id = document.getElementById("id").value
+            let nome = document.getElementById("nome");
+            let profession = document.getElementById("profession");
+            let age = document.getElementById("age");
+            let weight = document.getElementById("weight");
+            let height = document.getElementById("height");
+            let isRetired = document.getElementById("isRetired");
+            let nationality = document.getElementById("nationality");
+
+            pro[id] = new Professional(nome.value,age.value,weight.value,height.value,isRetired.value,nationality.value,profession.value)
+
+            let url = "http://localhost:3000/Professional";
+            let param =
+            {
+                headers:{"Content-type":"application/json;charset=UTF-8"},
+                body:JSON.stringify(pro[id]),
+                method:"PUT"
+            }
+            let data = await fetch(url,param);
+            let result = await data.json()
+            
+            
+            //console.log(pro[id])
+            console.log(result)
+        }
+        catch(error){console.log(error)}
 }
