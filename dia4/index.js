@@ -9,12 +9,13 @@ function consultarPokemon()
             document.getElementById("Nombre").innerHTML = 
             `<h2>${pokemon.name}</h2>`
             
-            
+            // document.getElementById("Imagen").innerHTML = 
+            // `<img src="${pokemon.sprites.other.dream_world.front_default}"`
             document.getElementById("Imagen").innerHTML = 
             `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${document.getElementById("Pokemon").value}.svg">`
             
 
-
+            //console.log(pokemon.sprites.other.dream_world.front_default);
 
             
            // console.log(pokemon.abilities)
