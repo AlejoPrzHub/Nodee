@@ -65,9 +65,16 @@ async function getProfessional()
             let idFront = document.getElementById("id").value
             let query = `id=${idFront}`
             let buscarId = new URLSearchParams(query)
+
+            console.log(typeof idFront)
             //buscarId.set("id",`${idFront}`)
 
-            let url = `http://localhost:3000/Professional/?${buscarId.set("id",`${idFront}`)}`;
+            let url;
+            if(idFront !="")
+            {
+                url = `http://localhost:3000/Professional`
+            }
+            else(url = `http://localhost:3000/Professional/?${buscarId.set("id",`${idFront}`)}`)
             let param =
             {
                 headers:{"Content-type":"application/json;charset=UTF-8"},
@@ -80,19 +87,8 @@ async function getProfessional()
             let tarjeta = document.getElementById("prof")
             let div = document.createElement("div")
             
-            
-                // for(let i=0;i<=result.length;i++)
-                // {document.getElementById("prof").innerHTML =
-                // `<div class="card">
-                // <p>Name: ${result[i].nome}</p>
-                // <p>Profession: ${result[i].profession} </p>
-                // <p>Age: ${result[i].age} </p>
-                // <p>Weight: ${result[i].weight} </p>
-                // <p>Height: ${result[i].height}</p>
-                // <p>Is Retired?: ${result[i].isRetired} </p>
-                // <p>Nationality: ${result[i].nationality}</p>`}
-
-                div.innerHTML =( 
+            if(result.length <= 1)
+                {div.innerHTML =( 
                 `<div class="card">
                 <p>Name: ${result[idFront].nome}</p>
                 <p>Profession: ${result[idFront].profession} </p>
@@ -101,7 +97,24 @@ async function getProfessional()
                 <p>Height: ${result[idFront].height}</p>
                 <p>Is Retired?: ${result[idFront].isRetired} </p>
                 <p>Nationality: ${result[idFront].nationality}</p>`)
-                tarjeta.appendChild(div);
+                tarjeta.appendChild(div)}
+
+            else 
+                {
+                tarjeta.innerHTML = "" 
+                for(let i=0;i<result.length;i++)
+                {div.innerHTML +=
+                (`<div class="card">
+                <p>Name: ${result[i].nome}</p>
+                <p>Profession: ${result[i].profession} </p>
+                <p>Age: ${result[i].age} </p>
+                <p>Weight: ${result[i].weight} </p>
+                <p>Height: ${result[i].height}</p>
+                <p>Is Retired?: ${result[i].isRetired} </p>
+                <p>Nationality: ${result[i].nationality}</p>`)
+                tarjeta.appendChild(div)}}
+
+                
             
         }
         catch(error){console.log(error)}
@@ -123,8 +136,8 @@ async function delProfessional()
         }
         //console.log(param)
         let data = await fetch(url,param);
-        let result = await data.json(id)
-        //result.splice(id)
+        let result = await data.json()
+        //result.splice(id,1)
         
         console.log(result)
     }
@@ -136,24 +149,23 @@ async function putProfessional()
         try
         {
             let idFront = document.getElementById("id").value
-            let nome = document.getElementById("nome");
-            let profession = document.getElementById("profession");
-            let age = document.getElementById("age");
-            let weight = document.getElementById("weight");
-            let height = document.getElementById("height");
-            let isRetired = document.getElementById("isRetired");
-            let nationality = document.getElementById("nationality");
-
+            let nome = document.getElementById("nome").value;
+            let profession = document.getElementById("profession").value;
+            let age = document.getElementById("age").value;
+            let weight = document.getElementById("weight").value;
+            let height = document.getElementById("height").value;
+            let isRetired = document.getElementById("isRetired").value;
+            let nationality = document.getElementById("nationality").value;
+            let nuevo = {nome:nome,age:age,weight:weight,height:height,isRetired:isRetired,nationality:nationality,profession:profession,id:idFront}
             let url = "http://localhost:3000/Professional";
             let param =
             {
                 headers:{"Content-type":"application/json;charset=UTF-8"},
-                body:JSON.stringify({"id": idFront}),
+                body:JSON.stringify(nuevo),
                 method:"PUT"
             }
             let data = await fetch(url,param);
             let result = await data.json()
-            result[idFront] = new Professional(nome.value,age.value,weight.value,height.value,isRetired.value,nationality.value,profession.value)
             
             console.log(result)
         }
