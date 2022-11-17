@@ -30,19 +30,26 @@
 }
 .imagen
 {
-    height: 300px;
+    height: 260px;
     border-radius: 10px;
 }
 .imagen img
 {
     margin-top: 20px;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
 }
 .nombre
 {
     height: 150px;
     border-radius: 10px;
+}
+.habilidades
+{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 1rem;
 }
 
 .card
