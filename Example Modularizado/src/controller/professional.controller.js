@@ -37,6 +37,7 @@ function postProfessional(request, response)
 
 function putProfessional(request, response)
 {
+    //console.log(request.query)
     console.log(request.body)
     if(request.body.id <= pro.length)
     {
@@ -49,7 +50,7 @@ function putProfessional(request, response)
         // pro[request.body.id].nationalyty =request.body.nationality?request.body.nationality:pro[request.body.id].nationality
         // pro[request.body.id].profession =request.body.profession?request.body.profession:pro[request.body.id].profession
 
-        message = {error:false,codigo:200,mensaje:"Professional modificado con exito",resultado:pro[request.body.id]}
+        message = {error:false,codigo:200,mensaje:"Professional modificado con exito",resultado:pro[request.query.id]}
     }
     
     else
@@ -59,6 +60,7 @@ function putProfessional(request, response)
 
 function delProfessional(request, response)
 {
+    //console.log(request.query)
     console.log(request.body)
     if(request.body.id <= pro.length)
     {
